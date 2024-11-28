@@ -14,30 +14,36 @@ class SimpleCardDemo extends HTMLElement {
         `;
 
         shadow.appendChild(template.content.cloneNode(true));
-
     }
 
+    // Called when the element is inserted into a document,
+    // including into a shadow tree
     connectedCallback() {
-        //TODO: Init Content based on attributes
-        throw new Error('Not implemented');
+        console.log('SimpleCard Komponente wurde in den DOM eingefügt');
+
+        this.updateContent();
     }
 
+    // Describes the observed attributes
     static get observedAttributes() {
-        // TODO: Define observed attributes
-        throw new Error('Not implemented');
+        return ['title', 'description'];
     }
 
+    // Called when the value of an attribute changes
     attributeChangedCallback(name, oldValue, newValue) {
-        // TODO: React on attribute changes
-        throw new Error('Not implemented');
+        if (name === 'title' || name === 'description') {
+            this.updateContent();
+        }
     }
 
+
+    // Updates title and description of the card
     updateContent() {
-        /*const title = this.getAttribute('title') || 'Kein Titel';
+        const title = this.getAttribute('title') || 'Kein Titel';
         const description = this.getAttribute('description') || 'Keine Beschreibung';
 
         this.shadowRoot.querySelector('#title').textContent = title;
-        this.shadowRoot.querySelector('#description').textContent = description;*/
+        this.shadowRoot.querySelector('#description').textContent = description;
     }
 }
 
