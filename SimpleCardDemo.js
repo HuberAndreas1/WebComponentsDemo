@@ -10,7 +10,7 @@ class SimpleCardDemo extends HTMLElement {
         <link rel="stylesheet" href="simple-card-demo.css">
         <h2 id="title"></h2>
         <p id="description"></p>
-        <slot></slot>
+        <slot name="footer"></slot>
         `;
 
         shadow.appendChild(template.content.cloneNode(true));
